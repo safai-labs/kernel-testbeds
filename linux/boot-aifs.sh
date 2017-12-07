@@ -18,8 +18,7 @@ build_rootfs() {
 
 boot_kernel() {
 	${QEMU}-${QEMU_ARCH} 			 \
-		-gdb tcp::1234 \
-		-S \
+		-s \
 		-drive file=${ROOTFS},format=raw,index=0 \
 		$(for k in $DRIVES; do echo -n "-drive format=raw,file=$k "; done ) \
 		-kernel ${KERNEL} 		 \
